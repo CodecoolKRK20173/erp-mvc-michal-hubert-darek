@@ -11,8 +11,8 @@ Data table structure:
 """
 
 # everything you'll need is imported:
-from model import data_manager
-from model import common
+#from model import data_manager
+#from model import common
 
 
 
@@ -26,10 +26,19 @@ def add(table, record):
 
     Returns:
         list: Table with a new record
+    
+    >>> add([["c", "d"]], ["a", "b"])
+    [['c', 'd'], ['a', 'b']]
+    >>> add([], ["a", "b"])
+    [['a', 'b']]
+    >>> add([], ['a'])
+    [['a']]
+    >>> add([], [])
+    [[]]
     """
-    # your code
-
-    return table
+    output_table = table.copy()
+    output_table.append(record)
+    return output_table
 
 
 def remove(table, id_):
