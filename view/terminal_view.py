@@ -23,6 +23,12 @@ def print_table(table, title_list):
     """
 
     # your goes code
+    #TODO Dynamin
+    print("/-----------------------------------\\")
+    print("| {:^5}".format('id') + "| {:^19}".format('title') + "| {:^5}".format('type') + ' |')
+    print("|------|--------------------|-------|")
+    print("| {:^5}".format('0') + "| {:^19}".format('Kontr Uderzenie') + "| {:^5}".format('fps') + ' |')
+    print("\-----------------------------------/")
 
 
 def print_result(result, label):
@@ -63,6 +69,11 @@ def print_menu(title, list_options, exit_message):
 
     # your code
 
+    print(title)
+    for i in range(len(list_options)):
+        print("{:>5}".format('(') + str(i+1) + ") " + str(list_options[i]))
+    print("{:>5}".format('(') + "0) " + exit_message)
+
 
 def get_inputs(list_labels, title):
     """
@@ -84,15 +95,18 @@ def get_inputs(list_labels, title):
             [<user_input_1>, <user_input_2>, <user_input_3>]
     """
     inputs = []
-
-    # your code
-
+    # your code # !!!foolproof to add!!!
+    print(title)
+    for i in range(len(list_labels)):
+        inputs.append(input(list_labels[i]+" "))
     return inputs
 
+
 def get_choice(options):
-    print_menu("Main menu",options, "Exit program")
+    print_menu("Main menu", options, "Exit program")
     inputs = get_inputs(["Please enter a number: "], "")
     return inputs[0]
+
 
 def print_error_message(message):
     """
@@ -106,3 +120,9 @@ def print_error_message(message):
     """
 
     # your code
+
+    print("<error>" + message + "<error>")
+
+
+print(get_inputs(list_labels=["Name", "Surname", "Age"], title="Please provide your personal information"))
+print(get_choice(options=['twoj stary', 'banan', 'kabanos']))
