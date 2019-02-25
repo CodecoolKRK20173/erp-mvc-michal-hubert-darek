@@ -27,13 +27,22 @@ def quicksort(table_to_sort, ascending_order = True):
 
     return quicksort(lower_elements, ascending_order) + [pivot_element] + quicksort(higher_elements, ascending_order)
 
-def find_index(tab, name_of_element):
+
+def find_index(list_of_elements, name_of_element):
     '''
-    >>>
+    Try to find first element equal name_of_element in list_of_elements
+
+    >>> find_index([1,2,3,5,7], 3)
+    2
+    >>> find_index(["g","j","b","c","a"], "c")
+    3
+    >>> find_index([1,"2","b",5,"b"], "b")
+    2
+    >>> find_index([1,2,3,5,7], 10)
     '''
     index = 0
-    if name_of_element in tab:
-        for element in tab:
+    if name_of_element in list_of_elements:
+        for element in list_of_elements:
             if name_of_element == element:
                 return index
             index += 1
