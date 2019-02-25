@@ -39,6 +39,7 @@ def find_index(list_of_elements, name_of_element):
     >>> find_index([1,"2","b",5,"b"], "b")
     2
     >>> find_index([1,2,3,5,7], 10)
+    >>> find_index([], 10)
     '''
     index = 0
     if name_of_element in list_of_elements:
@@ -48,3 +49,24 @@ def find_index(list_of_elements, name_of_element):
             index += 1
     else:
         return None
+
+def count_elements(list_of_elements, name_of_element):
+    '''
+    Count elements equal name_of_element in list_of_elements
+
+    >>> count_elements([1,2,2,2,7], 2)
+    3
+    >>> count_elements(["g","c","b","c","a"], "c")
+    2
+    >>> count_elements([1,"2","b",5,"b"], "b")
+    2
+    >>> count_elements([1,2,3,5,7], 10)
+    0
+    >>> count_elements([], 10)
+    0
+    '''
+    counter = 0
+    for element in list_of_elements:
+        if name_of_element == element:
+            counter += 1
+    return counter
