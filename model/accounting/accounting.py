@@ -11,12 +11,15 @@ Data table structure:
 """
 
 # everything you'll need is imported:
-from model import data_manager
-from model import common
+import sys
+sys.path.insert(0, '/home/darek/Desktop/Repositories/erp-mvc-michal-hubert-darek/model')
+
+import data_manager
+import common
 
 # special functions:
 # ------------------
-
+print(data_manager.get_table_from_file("items.csv"))
 def which_year_max(table):
     """
     Question: Which year has the highest profit? (profit = in - out)

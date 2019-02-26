@@ -11,8 +11,11 @@ Data table structure:
 """
 
 # everything you'll need is imported:
-from model import data_manager
-from model import common
+import sys
+sys.path.insert(0, '/home/darek/Desktop/Repositories/erp-mvc-michal-hubert-darek/model')
+
+import data_manager
+import common
 
 # special functions:
 # ------------------
