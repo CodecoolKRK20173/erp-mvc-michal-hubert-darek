@@ -23,7 +23,7 @@ def print_table(table, title_list):
     """
 
     # your goes code
-    #TODO Dynamin
+    # TODO Dynamin
     print("/-----------------------------------\\")
     print("| {:^5}".format('id') + "| {:^19}".format('title') + "| {:^5}".format('type') + ' |')
     print("|------|--------------------|-------|")
@@ -44,6 +44,9 @@ def print_result(result, label):
     """
 
     # your code
+
+    print("Label: ", label)
+    print(result)
 
 
 def print_menu(title, list_options, exit_message):

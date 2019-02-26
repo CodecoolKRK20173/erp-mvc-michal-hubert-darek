@@ -34,3 +34,6 @@ def run():
             crm_controller.run()
         else:
             terminal_view.print_error_message("There is no such choice.")
+
+
+run()
