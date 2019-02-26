@@ -36,6 +36,7 @@ def add(table, record):
     >>> add([], [])
     [[]]
     """
+
     output_table = table.copy()
     output_table.append(record)
     return output_table
@@ -51,11 +52,23 @@ def remove(table, id_):
 
     Returns:
         list: Table without specified record.
+    >>> remove([['c', 'd'], ['a', 'b']], 1)
+    [['c', 'd']]
+    >>> remove([["a", "b"]], 0)
+    []
+    >>> remove([[]], 0)
+    []
+    >>> remove([['a']], "a")
+    >>> remove([['a']], -3)
+    >>> remove([['a']], 1)
     """
 
-    # your code
-
-    return table
+    if type(id_) != int: return
+    if len(table) <= id_ or id_ < 0: return
+    
+    output_table = table.copy()
+    del output_table[id_]
+    return output_table
 
 
 def update(table, id_, record):
