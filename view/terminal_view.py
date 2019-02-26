@@ -1,6 +1,33 @@
 """ Terminal view module """
 
 
+def lenght(albums_list):
+    lenght = []
+    for i in range(5):
+        size = 0
+        for album in albums_list:
+            if size < len(album[i]):
+                size = len(album[i])
+        lenght.append(size)
+    return lenght
+
+
+list1 = ["id", "title", "type"]
+list2 = [["0", "Counter Strike", "FPS"], ["1", "Age of Empires", "RTS"], ["2", "Dota", "MOBA"], ["2", "Dota", "MOBA"],
+         ["2", "Dota", "MOBA"]]
+
+
+def length_v2(album_list):
+    lenght = []
+    for i in range(len(album_list[0])):
+        size = 0
+        for album in album_list:
+            if size < len(album[i]):
+                size = len(album[i])
+        lenght.append(size)
+    return lenght
+
+
 def print_table(table, title_list):
     """
     Prints table with data.
@@ -22,13 +49,38 @@ def print_table(table, title_list):
         None: This function doesn't return anything it only prints to console.
     """
 
-    # your goes code
-    # TODO Dynamin
-    print("/-----------------------------------\\")
-    print("| {:^5}".format('id') + "| {:^19}".format('title') + "| {:^5}".format('type') + ' |')
-    print("|------|--------------------|-------|")
-    print("| {:^5}".format('0') + "| {:^19}".format('Kontr Uderzenie') + "| {:^5}".format('fps') + ' |')
-    print("\-----------------------------------/")
+    print_list = [title_list] + table
+    counter = 0
+    add_space = 4
+    sum = 0
+    pause1 = ""
+    pause2 = "/"
+    x = length_v2(print_list)
+    for item in x:
+        sum = sum + int(item)
+
+    sum = sum + add_space + 12
+
+    for item in x:
+        pause1 = pause1 + '|' + (item + add_space) * '-'
+        pause2 = pause2 + (item + add_space + 1) * '-'
+
+    pause1 = pause1 + '|' + '\n'
+    pause2 = pause2[:-1]
+    pause2 = pause2 + '\\' + '\n'
+
+    string = pause2
+
+    for items in print_list:
+        for item in items:
+            string = string + "|{:^{x}}".format(item, x=x[counter] + add_space)
+            counter += 1
+        string = string + "|" + '\n' + pause1
+        counter = 0
+    print(string)
+
+
+print_table(list2, list1)
 
 
 def print_result(result, label):
@@ -74,7 +126,7 @@ def print_menu(title, list_options, exit_message):
 
     print(title)
     for i in range(len(list_options)):
-        print("{:>5}".format('(') + str(i+1) + ") " + str(list_options[i]))
+        print("{:>5}".format('(') + str(i + 1) + ") " + str(list_options[i]))
     print("{:>5}".format('(') + "0) " + exit_message)
 
 
@@ -101,7 +153,7 @@ def get_inputs(list_labels, title):
     # your code # !!!foolproof to add!!!
     print(title)
     for i in range(len(list_labels)):
-        inputs.append(input(list_labels[i]+" "))
+        inputs.append(input(list_labels[i] + " "))
     return inputs
 
 
@@ -125,7 +177,3 @@ def print_error_message(message):
     # your code
 
     print("<error>" + message + "<error>")
-
-
-print(get_inputs(list_labels=["Name", "Surname", "Age"], title="Please provide your personal information"))
-print(get_choice(options=['twoj stary', 'banan', 'kabanos']))
