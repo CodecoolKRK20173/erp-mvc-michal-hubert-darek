@@ -8,61 +8,11 @@ Data table structure:
 """
 
 # everything you'll need is imported:
-from model import data_manager
-from model import common
+import sys
+sys.path.insert(0, '/home/darek/Desktop/Repositories/erp-mvc-michal-hubert-darek/model')
 
-
-
-def add(table, record):
-    """
-    Add new record to table
-
-    Args:
-        table (list): table to add new record to
-        record (list): new record
-
-    Returns:
-        list: Table with a new record
-    """
-    # your code
-
-    return table
-
-
-def remove(table, id_):
-    """
-    Remove a record with a given id from the table.
-
-    Args:
-        table (list): table to remove a record from
-        id_ (str): id of a record to be removed
-
-    Returns:
-        list: Table without specified record.
-    """
-
-    # your code
-
-    return table
-
-
-def update(table, id_, record):
-    """
-    Updates specified record in the table.
-
-    Args:
-        table: list in which record should be updated
-        id_ (str): id of a record to update
-        record (list): updated record
-
-    Returns:
-        list: table with updated record
-    """
-
-    # your code
-
-    return table
-
+import data_manager
+import common
 
 # special functions:
 # ------------------
