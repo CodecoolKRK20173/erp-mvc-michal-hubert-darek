@@ -11,8 +11,8 @@ Data table structure:
 """
 
 # everything you'll need is imported:
-#from model import data_manager
-#from model import common
+from model import data_manager
+from model import common
 
 
 
@@ -27,18 +27,22 @@ def add(table, record):
     Returns:
         list: Table with a new record
     
-    >>> add([["c", "d"]], ["a", "b"])
-    [['c', 'd'], ['a', 'b']]
-    >>> add([], ["a", "b"])
-    [['a', 'b']]
-    >>> add([], ['a'])
-    [['a']]
+    >>> add([["record", "one"]], ["new", "record"])
+    [['record', 'one'], ['new', 'record']]
+
+    >>> add([], ["new", "record"])
+    [['new', 'record']]
+    
+    >>> add([], ["new", "record"])
+    [['new', 'record']]
+    
     >>> add([], [])
     [[]]
     """
 
     output_table = table.copy()
     output_table.append(record)
+
     return output_table
 
 
@@ -52,15 +56,16 @@ def remove(table, id_):
 
     Returns:
         list: Table without specified record.
-    >>> remove([['c', 'd'], ['a', 'b']], 1)
-    [['c', 'd']]
-    >>> remove([["a", "b"]], 0)
+        
+    >>> remove([["record", "one"], ["record", "two"]], 1)
+    [['record', 'one']]
+    >>> remove([["record", "one"]], 0)
     []
     >>> remove([[]], 0)
     []
-    >>> remove([['a']], "a")
-    >>> remove([['a']], -3)
-    >>> remove([['a']], 1)
+    >>> remove([["record", "one"]], "a")
+    >>> remove([["record", "one"]], -3)
+    >>> remove([["record", "one"]], 1)
     """
 
     if type(id_) != int: return
@@ -68,6 +73,7 @@ def remove(table, id_):
     
     output_table = table.copy()
     del output_table[id_]
+
     return output_table
 
 
@@ -82,11 +88,33 @@ def update(table, id_, record):
 
     Returns:
         list: table with updated record
+    
+    >>> update([['record', 'one'], ['record', 'two']], 1, ['new', 'record'])
+    [['record', 'one'], ['new', 'record']]
+
+    >>> update([["a", "b"]], 0, [])
+    [[]]
+
+    >>> update([[]], 0, ['new', 'record'])
+    [['new', 'record']]
+
+    >>> update([['old_record']], "a", ['new_record'])
+    [['old_record']]
+
+    >>> update([['old_record']], -3, ['new_record'])
+    [['old_record']]
+    
+    >>> update([['old_record']], 1, ['new_record'])
+    [['old_record']]
     """
 
-    # your code
+    if type(id_) != int: return table.copy()
+    if len(table) <= id_ or id_ < 0: return table.copy()
+    
+    output_table = table.copy()
+    output_table[id_] = record
 
-    return table
+    return output_table
 
 
 # special functions:
