@@ -1,21 +1,23 @@
 """ Sales module
 
 Data table structure:
-    * id (string): Unique and random generated identifier
+  0  * id (string): Unique and random generated identifier
         at least 2 special characters (except: ';'), 2 number, 2 lower and 2 upper case letters)
-    * title (string): Title of the game sold
-    * price (number): The actual sale price in USD
-    * month (number): Month of the sale
-    * day (number): Day of the sale
-    * year (number): Year of the sale
+  1  * title (string): Title of the game sold
+  2  * price (number): The actual sale price in USD
+  3  * month (number): Month of the sale
+  4  * day (number): Day of the sale
+  5  * year (number): Year of the sale
 """
 
 # everything you'll need is imported:
 from model import data_manager
 from model import common
 
+
 # special functions:
 # ------------------
+
 
 def get_lowest_price_item_id(table):
     """
@@ -31,16 +33,17 @@ def get_lowest_price_item_id(table):
 
     # your code
 
-    min = table[0][2]
+    minimal_price = table[0][2]
+    item_id = table[0][0]
 
     for item in table:
-        if min > item[2]:
-            min = item[2]
-            id = item[0]
+        print(item)
+        if minimal_price > item[2]:
+            minimal_price = item[2]
+            item_id = item[0]
+        print(item_id)
 
-    return id
-
-
+    return item_id
 
 
 def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
@@ -61,3 +64,12 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
     """
 
     # your code
+    start_date = (year_from * 365) + (month_from * 31) + day_from
+    end_date = (year_to * 365) + (month_to * 31) + day_to
+    date_inc = 0
+    filtered_table = []
+    for item in table:
+        date_inc = (item[5] * 365) + (item[3] * 31) + item[4]
+        if date_inc >= start_date and date_inc <= end_date:
+            filtered_table.append(item)
+    return filtered_table
