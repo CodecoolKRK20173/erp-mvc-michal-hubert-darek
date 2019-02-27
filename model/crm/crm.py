@@ -26,8 +26,19 @@ def get_longest_name_id(table):
             string: id of the longest name (if there are more than one, return
                 the last by alphabetical order of the names)
         """
+    __NAME_INDEX = 1
+    max_len = 0
+    name_len_dict = {}
+    
+    for record in table:
+        len_of_name = len(record[__NAME_INDEX].split()[1])
+        if len_of_name > max_len:
+            max_len = len_of_name
+            name_len_dict[max_len] = record[0]
 
-    # your code
+    return name_len_dict[max_len]
+
+    
 
 
 # the question: Which customers has subscribed to the newsletter?
