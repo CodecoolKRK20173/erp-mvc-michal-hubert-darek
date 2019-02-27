@@ -25,7 +25,7 @@ def get_longest_name_id(table):
         Returns:
             string: id of the longest name (if there are more than one, return
                 the last by alphabetical order of the names)
-        """
+    """
     __NAME_INDEX = 1
     max_len = 0
     name_len_dict = {}
@@ -52,6 +52,8 @@ def get_subscribed_emails(table):
 
         Returns:
             list: list of strings (where a string is like "email;name")
-        """
-
-    # your code
+    """
+    __NAME_INDEX = 1
+    __EMAIL_INDEX = 2
+    __SUB_FLAG_INDEX = 3
+    return([f"{record[__EMAIL_INDEX]};{record[__NAME_INDEX]}" for record in table if int(record[__SUB_FLAG_INDEX])])
