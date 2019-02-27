@@ -1,5 +1,15 @@
 """ Terminal view module """
 
+def length(album_list):
+    lenght = []
+    for i in range(len(album_list[0])):
+        size = 0
+        for album in album_list:
+            if size < len(album[i]):
+                size = len(album[i])
+        lenght.append(size)
+    return lenght
+
 
 def print_table(table, title_list):
     """
@@ -22,7 +32,35 @@ def print_table(table, title_list):
         None: This function doesn't return anything it only prints to console.
     """
 
-    # your goes code
+    print_list = [title_list] + table
+    counter = 0
+    add_space = 4
+    sum = 0
+    pause1 = ""
+    pause2 = "/"
+    x = length_v2(print_list)
+    for item in x:
+        sum = sum + int(item)
+
+    sum = sum + add_space + 12
+
+    for item in x:
+        pause1 = pause1 + '|' + (item + add_space) * '-'
+        pause2 = pause2 + (item + add_space + 1) * '-'
+
+    pause1 = pause1 + '|' + '\n'
+    pause2 = pause2[:-1]
+    pause2 = pause2 + '\\' + '\n'
+
+    string = pause2
+
+    for items in print_list:
+        for item in items:
+            string = string + "|{:^{x}}".format(item, x=x[counter] + add_space)
+            counter += 1
+        string = string + "|" + '\n' + pause1
+        counter = 0
+    print(string)
 
 
 def print_result(result, label):
@@ -38,6 +76,9 @@ def print_result(result, label):
     """
 
     # your code
+
+    print("Label: ", label)
+    print(result)
 
 
 def print_menu(title, list_options, exit_message):
@@ -63,6 +104,11 @@ def print_menu(title, list_options, exit_message):
 
     # your code
 
+    print(title)
+    for i in range(len(list_options)):
+        print("{:>5}".format('(') + str(i + 1) + ") " + str(list_options[i]))
+    print("{:>5}".format('(') + "0) " + exit_message)
+
 
 def get_inputs(list_labels, title):
     """
@@ -84,15 +130,18 @@ def get_inputs(list_labels, title):
             [<user_input_1>, <user_input_2>, <user_input_3>]
     """
     inputs = []
-
-    # your code
-
+    # your code # !!!foolproof to add!!!
+    print(title)
+    for i in range(len(list_labels)):
+        inputs.append(input(list_labels[i] + " "))
     return inputs
 
+
 def get_choice(options):
-    print_menu("Main menu",options, "Exit program")
+    print_menu("Main menu", options, "Exit program")
     inputs = get_inputs(["Please enter a number: "], "")
     return inputs[0]
+
 
 def print_error_message(message):
     """
@@ -106,3 +155,5 @@ def print_error_message(message):
     """
 
     # your code
+
+    print("<error>" + message + "<error>")
