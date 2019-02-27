@@ -11,11 +11,33 @@ Data table structure:
 """
 
 # everything you'll need is imported:
-from model import data_manager
-from model import common
+#from model import data_manager
+#from model import common
 
 # special functions:
 # ------------------
+
+def calculate_profit(table):
+    '''
+    Calculate profit in all years
+
+    >>> calculate_profit([["kH14Ju#&", 1, 21, 2015, "out", 100], ["kH38Jm#&", 10, 23, 2016, "out", 100],\
+    ["eH34Jd#&", 2, 12, 2015, "in", 400], ["kH38Ju#&", 3, 10, 2016, "in", 100]])
+    {2015: 300, 2016: 0}
+    '''
+    __YEAR_INDEX = 3
+    __TYPE_INDEX = 4
+    __INCOME_INDEX = 5
+    years = dict.fromkeys([table[index][__YEAR_INDEX] for index in range(len(table))], 0)
+    keys = list(years.keys())
+    for record in table:
+        if record[__TYPE_INDEX] == "out":
+            in_or_out = -1
+        else:
+            in_or_out = 1
+        years[record[3]] += int(record[__INCOME_INDEX]) * in_or_out
+    return years
+
 
 def which_year_max(table):
     '''
@@ -30,19 +52,8 @@ def which_year_max(table):
     >>> which_year_max([["kH14Ju#&", 1, 21, 2015, "out", 100], ["kH38Jm#&", 10, 23, 2016, "out", 100],\
     ["eH34Jd#&", 2, 12, 2015, "in", 400], ["kH38Ju#&", 3, 10, 2016, "in", 100]])
     2015
-    '''
-    __YEAR_INDEX = 3
-    __TYPE_INDEX = 4
-    __INCOME_INDEX = 5
-    years = dict.fromkeys([table[index][__YEAR_INDEX] for index in range(len(table))], 0)
-    keys = list(years.keys())
-    for record in table:
-        if record[__TYPE_INDEX] == "out":
-            in_or_out = -1
-        else:
-            in_or_out = 1
-        years[record[3]] += int(record[__INCOME_INDEX]) * in_or_out
-    
+    ''' 
+    years = calculate_profit(table) 
     highest_profit = next(iter(years.values()))
 
     for value in years.values():
