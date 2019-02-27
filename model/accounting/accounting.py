@@ -16,7 +16,6 @@ from model import common
 
 # special functions:
 # ------------------
-<<<<<<< HEAD
 
 def calculate_profit(table):
     '''
@@ -40,8 +39,6 @@ def calculate_profit(table):
     return years
 
 
-=======
->>>>>>> 7254d97597df9f4822d2b6ca59b7186d730eca80
 def which_year_max(table):
     '''
     Question: Which year has the highest profit? (profit = in - out)
