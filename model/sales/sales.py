@@ -31,6 +31,17 @@ def get_lowest_price_item_id(table):
 
     # your code
 
+    min = table[0][2]
+
+    for item in table:
+        if min > item[2]:
+            min = item[2]
+            id = item[0]
+
+    return id
+
+
+
 
 def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
     """
