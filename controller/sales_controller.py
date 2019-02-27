@@ -15,15 +15,29 @@ def run():
     """
 
     # your code
-    menu_sale = ["Get ID lowest price item", "Get Item/s between date"]
+    menu_sale = ["Print sale list", "Add to sale list", "Remove form sale list", "Update record in sale list",
+                 "Get ID lowest price item", "Get Item/s between date"]
     title = ["ID", "Title", "Price", "Month", "Day", "Year"]
     choice = None
     while choice != "0":
         choice = terminal_view.get_choice(menu_sale)
+
         if choice == "1":
+            terminal_view.print_table(sales.get_data(),title)
+
+        if choice == "2":
+            pass
+
+        if choice == "3":
+            pass
+
+        if choice == "4":
+            pass
+
+        if choice == "5":
             terminal_view.print_result(sales.get_lowest_price_item_id(sales.get_data()),
                                        'Id of the item sold the cheapest')
-        if choice == "2":
+        if choice == "6":
             user_input_list = sales.get_user_input()
             print(user_input_list[0])
             terminal_view.print_table(
