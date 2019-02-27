@@ -3,6 +3,7 @@ from view import terminal_view
 from model.sales import sales
 from controller import common
 
+
 def run():
     """
     Starts this module and displays its menu.
@@ -14,3 +15,16 @@ def run():
     """
 
     # your code
+    menu_sale = ["Get ID lowest price item", "Get Item/s between"]
+    title = ["ID", "Title", "Price", "Month", "Day", "Year"]
+    choice = None
+    while choice != "0":
+        choice = terminal_view.get_choice(menu_sale)
+        if choice == "1":
+            terminal_view.print_result(sales.get_lowest_price_item_id(sales.get_data()),
+                                       'Id of the item sold the cheapest')
+        if choice == "2":
+            terminal_view.print_table(sales.get_items_sold_between(sales.get_data(), input("month_from: "), input('day_from: '),
+                                               input("year_from: "), input("month_to: "), input("day_to: "),
+                                               input('year_to: ')), title)
+            pass

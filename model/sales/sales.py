@@ -14,10 +14,12 @@ Data table structure:
 from model import data_manager
 from model import common
 
+import os
 
-# special functions:
 # ------------------
 
+def get_data():
+    return data_manager.get_table_from_file("model/sales/sales.csv")
 
 def get_lowest_price_item_id(table):
     """
@@ -37,12 +39,9 @@ def get_lowest_price_item_id(table):
     item_id = table[0][0]
 
     for item in table:
-        print(item)
         if minimal_price > item[2]:
             minimal_price = item[2]
             item_id = item[0]
-        print(item_id)
-
     return item_id
 
 
