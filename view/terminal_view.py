@@ -38,7 +38,7 @@ def print_table(table, title_list):
     sum = 0
     pause1 = ""
     pause2 = "/"
-    x = length_v2(print_list)
+    x = length(print_list)
     for item in x:
         sum = sum + int(item)
 

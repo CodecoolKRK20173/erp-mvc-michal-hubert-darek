@@ -17,6 +17,11 @@ from model import common
 # ------------------
 
 
+def get_file():
+    imported_file = data_manager.get_table_from_file("model/inventory/inventory.csv")
+    return imported_file
+
+
 def get_available_items(table):
     """
     Question: Which items have not exceeded their durability yet?
@@ -29,6 +34,7 @@ def get_available_items(table):
     """
 
     # your code
+    print(table)
 
 
 def get_average_durability_by_manufacturers(table):
@@ -43,3 +49,4 @@ def get_average_durability_by_manufacturers(table):
     """
 
     # your code
+    print(table)

@@ -14,3 +14,13 @@ def run():
     """
 
     # your code
+    menus = ["Option 1 hr", "Option 2 hr"]
+    choice = None
+    while choice != "0":
+        choice = terminal_view.get_choice(menus)
+        if choice == "1":
+            inventory.get_available_items()
+        elif choice == "2":
+            inventory.get_average_durability_by_manufacturers()
+        else:
+            terminal_view.print_error_message("There is no such choice.")
