@@ -1,23 +1,6 @@
 """ Terminal view module """
 
-
-def lenght(albums_list):
-    lenght = []
-    for i in range(5):
-        size = 0
-        for album in albums_list:
-            if size < len(album[i]):
-                size = len(album[i])
-        lenght.append(size)
-    return lenght
-
-
-list1 = ["id", "title", "type"]
-list2 = [["0", "Counter Strike", "FPS"], ["1", "Age of Empires", "RTS"], ["2", "Dota", "MOBA"], ["2", "Dota", "MOBA"],
-         ["2", "Dota", "MOBA"]]
-
-
-def length_v2(album_list):
+def length(album_list):
     lenght = []
     for i in range(len(album_list[0])):
         size = 0
@@ -78,9 +61,6 @@ def print_table(table, title_list):
         string = string + "|" + '\n' + pause1
         counter = 0
     print(string)
-
-
-print_table(list2, list1)
 
 
 def print_result(result, label):

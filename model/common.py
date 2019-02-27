@@ -138,4 +138,4 @@ def generate_random(table):
         try:
             generate_random(table)
         except RecursionError:
-            print("Stack overflow error!")s
+            print("Stack overflow error!")
