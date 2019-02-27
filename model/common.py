@@ -214,13 +214,13 @@ def find_max(list_of_elements):
     '''
     Find max element in list_of_elements
 
-    >>> max([1,2,2,2,7])
+    >>> find_max([1,2,2,2,7])
     7
-    >>> max(["g","c","b","c","a"])
+    >>> find_max(["g","c","b","c","a"])
     'g'
     '''
     max = list_of_elements[0]
-    for element in elements:
+    for element in list_of_elements:
         if not max > element:
             max = element
     return max
