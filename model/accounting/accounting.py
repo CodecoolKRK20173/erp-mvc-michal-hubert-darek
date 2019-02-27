@@ -21,21 +21,21 @@ def calculate_profit(table):
     '''
     Calculate profit in all years
 
-    >>> calculate_profit([["kH14Ju#&", 1, 21, 2015, "out", 100], ["kH38Jm#&", 10, 23, 2016, "out", 100],\
-    ["eH34Jd#&", 2, 12, 2015, "in", 400], ["kH38Ju#&", 3, 10, 2016, "in", 100]])
-    {2015: 300, 2016: 0}
+    >>> calculate_profit([["kH14Ju#&", "1", "21", "2015", "out", "100"], ["kH38Jm#&", "10", "23", "2016", "out", "100"],\
+    ["eH34Jd#&", "2", "12", "2015", "in", "400"], ["kH38Ju#&", "3", "10", "2016", "in", "100"]])
+    {2015: 300.0, 2016: 0.0}
     '''
     __YEAR_INDEX = 3
     __TYPE_INDEX = 4
     __INCOME_INDEX = 5
-    years = dict.fromkeys([table[index][__YEAR_INDEX] for index in range(len(table))], 0)
+    years = dict.fromkeys([int(table[index][__YEAR_INDEX]) for index in range(len(table))], 0)
     keys = list(years.keys())
     for record in table:
         if record[__TYPE_INDEX] == "out":
             in_or_out = -1
         else:
             in_or_out = 1
-        years[record[3]] += int(record[__INCOME_INDEX]) * in_or_out
+        years[int(record[3])] += float(record[__INCOME_INDEX]) * in_or_out
     return years
 
 
@@ -49,8 +49,8 @@ def which_year_max(table):
     Returns:
         number
 
-    >>> which_year_max([["kH14Ju#&", 1, 21, 2015, "out", 100], ["kH38Jm#&", 10, 23, 2016, "out", 100],\
-    ["eH34Jd#&", 2, 12, 2015, "in", 400], ["kH38Ju#&", 3, 10, 2016, "in", 100]])
+    >>> which_year_max([["kH14Ju#&", "1", "21", "2015", "out", "100"], ["kH38Jm#&", "10", "23", "2016", "out", "100"],\
+    ["eH34Jd#&", "2", "12", "2015", "in", "400"], ["kH38Ju#&", "3", "10", "2016", "in", "100"]])
     2015
     ''' 
     years = calculate_profit(table) 
@@ -75,6 +75,30 @@ def avg_amount(table, year):
 
     Returns:
         number
+    
+    >>> avg_amount([["kH14Ju#&", "1", "21", "2015", "out", "100"], ["kH38Jm#&", "10", "23", "2016", "out", "100"],\
+    ["eH34Jd#&", "2", "12", "2015", "in", "400"], ["kH38Ju#&", "3", "10", "2016", "in", "100"]], 2016)
+    0
+    >>> avg_amount([["kH14Ju#&", "1", "21", "2015", "out", "100"], ["kH38Jm#&", "10", "23", "2016", "out", "100"],\
+    ["eH34Jd#&", "2", "12", "2015", "in", "400"], ["kH38Ju#&", "3", "10", "2016", "in", "100"]], 2015)
+    150
     """
+    __YEAR_INDEX = 3
+    profit_in_all_years = calculate_profit(table)
+    
+    profit_in_chose_year = profit_in_all_years[year]
 
-    # your code
+    amount = 0
+    for record in table:
+        if int(record[__YEAR_INDEX]) == year:
+            amount += 1
+
+    if amount == 0:
+        return 0
+
+    average = profit_in_chose_year / amount
+
+    if average == int(average):
+        return int(average)
+    else:
+        return average
