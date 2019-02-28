@@ -13,8 +13,11 @@ Data table structure:
 from model import data_manager
 from model import common
 
+
 # special functions:
 # ------------------
+def get_data():
+    return data_manager.get_table_from_file("model/store/games.csv")
 
 
 def get_counts_by_manufacturers(table):
@@ -29,6 +32,17 @@ def get_counts_by_manufacturers(table):
     """
 
     # your code
+    dict_manufactures = {}
+    count = 0
+    countup = 1
+    for items in table:
+        if items[2] in dict_manufactures:
+            count = countup + dict_manufactures[items[2]]
+            dict_manufactures[items[2]] = count
+        else:
+            dict_manufactures[items[2]] = 1
+
+    return dict_manufactures
 
 
 def get_average_by_manufacturer(table, manufacturer):
@@ -44,3 +58,10 @@ def get_average_by_manufacturer(table, manufacturer):
     """
 
     # your code
+    stock = 0
+    counter = 0
+    for items in table:
+        if items[2] == manufacturer:
+            stock = stock + int(items[4])
+            counter += 1
+    return stock / counter
