@@ -16,6 +16,10 @@ from model import common
 
 # special functions:
 # ------------------
+def add():
+    print("asdasd")
+    pass
+
 def get_data():
     return data_manager.get_table_from_file("model/store/games.csv")
 
