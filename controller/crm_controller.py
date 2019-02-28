@@ -13,4 +13,13 @@ def run():
         None
     """
 
-    # your code
+    menu = ["Show subscribers", "Show id of person with the longest surname"]
+    choice = None
+    while choice != "0":
+        choice = terminal_view.get_choice(menu)
+        if choice == "1":
+            terminal_view.print_result(crm.get_subscribed_emails(crm.get_file()), "Subscribers")
+        elif choice == "2":
+            terminal_view.print_result(crm.get_longest_name_id(crm.get_file()), "Id of person with the longest surname")
+        else:
+            terminal_view.print_error_message("There is no such choice.")

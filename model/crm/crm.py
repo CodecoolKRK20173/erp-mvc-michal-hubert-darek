@@ -12,6 +12,12 @@ Data table structure:
 from model import data_manager
 from model import common
 
+
+def get_file():
+    imported_file = data_manager.get_table_from_file("model/crm/customers.csv")
+    return imported_file
+
+
 # special functions:
 # ------------------
 
