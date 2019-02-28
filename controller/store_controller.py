@@ -17,24 +17,28 @@ def run():
     # your code
 
     menu_sale = ["Print store list", "Add to store list", "Remove form store list", "Update record in store list",
-                 "number of games in the manufacture", "Average amount of games in stock of a given manufacturer "]
-    title = ["ID", "Title", "Price", "Month", "Day", "Year"]
+                 "Number of games in the manufacture", "Average amount of games in stock of a given manufacturer "]
+    title = ["ID", "Title", "Manufacturer", "Price", "In_stock"]
+    title_del = ["Input ID: "]
     choice = None
     while choice != "0":
         choice = terminal_view.get_choice(menu_sale)
 
         if choice == "1":
-            terminal_view.print_table(store.get_data(),title)
+            terminal_view.print_table(store.get_data(), title)
 
         if choice == "2":
-            pass
-
+            store.new_record(common.get_user_inp_record(terminal_view.get_inputs(title[1:], "")),
+                             "model/store/games.csv")
         if choice == "3":
-            pass
-
+            store.delete_record(store.get_data(), common.get_user_inp_record(terminal_view.get_inputs(title_del, "")),
+                                "model/store/games.csv")
         if choice == "4":
-            pass
+            store.update_record(store.get_data(), common.get_user_inp_record(terminal_view.get_inputs(title_del, "")),
+                                terminal_view.get_inputs(title[1:], ""), "model/store/games.csv")
         if choice == "5":
-            store.get_counts_by_manufacturers(store.get_data())
+            terminal_view.print_result(store.get_counts_by_manufacturers(store.get_data()),
+                                       "Different kinds of game are available of each manufacturer: ")
         if choice == "6":
-            pass
+            terminal_view.print_result(store.get_average_by_manufacturer(store.get_data(), common.get_user_inp_record(
+                terminal_view.get_inputs(["Input manufactures: "], ""))), "Average games in manufacturer: ")

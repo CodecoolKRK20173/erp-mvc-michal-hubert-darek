@@ -42,7 +42,6 @@ def delete_record(table, id, filename):
 
 
 def update_record(table, id, inputs, filename):
-    s = "".join(id)
     counter = 0
     update_id = None
     for item in table:
