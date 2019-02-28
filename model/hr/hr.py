@@ -15,10 +15,42 @@ from model import common
 # ------------------
 
 
-def get_file():
-    imported_file = data_manager.get_table_from_file("model/hr/persons.csv")
-    return imported_file
+def get_data():
+    return data_manager.get_table_from_file("model/hr/persons.csv")
 
+
+def new_record(inputs, filename):
+    new_table_value = []
+    new_table_value = common.add(get_data(), make_record(get_data(), inputs))
+    data_manager.write_table_to_file(filename, new_table_value)
+
+
+def delete_record(table, id, filename):
+    counter = 0
+    remove_id = None
+    for item in table:
+        if str(item[0]) in str(id):
+            remove_id = counter
+        counter += 1
+    new_list = common.remove(table, remove_id)
+    data_manager.write_table_to_file(filename, new_list)
+
+
+def update_record(table, id, inputs, filename):
+    s = "".join(id)
+    counter = 0
+    update_id = None
+    for item in table:
+        if str(item[0]) in str(id):
+            update_id = counter
+        counter += 1
+    new_list = common.update(table, update_id, make_record(get_data(), inputs))
+    data_manager.write_table_to_file(filename, new_list)
+
+
+def make_record(table, inputs):
+    output_list = [common.generate_random(table)] + inputs
+    return output_list
 
 def get_oldest_person(table):
     """
