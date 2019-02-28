@@ -17,6 +17,11 @@ from model import common
 # special functions:
 # ------------------
 
+def get_file():
+    imported_file = data_manager.get_table_from_file("model/accounting/items.csv")
+    return imported_file
+
+
 def calculate_profit(table):
     '''
     Calculate profit in all years
@@ -84,8 +89,14 @@ def avg_amount(table, year):
     150
     """
     __YEAR_INDEX = 3
-    profit_in_all_years = calculate_profit(table)
     
+    try:
+        year = int(year)
+    except:
+        raise
+
+    profit_in_all_years = calculate_profit(table)
+    if not year in profit_in_all_years.keys(): return
     profit_in_chose_year = profit_in_all_years[year]
 
     amount = 0
@@ -101,4 +112,4 @@ def avg_amount(table, year):
     if average == int(average):
         return int(average)
     else:
-        return average
+        return round(average, 2)
