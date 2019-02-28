@@ -17,11 +17,12 @@ def run():
     # your code
     menus = ["Availble items", "Average durability"]
     choice = None
+    titles = ["id", "game", "producent", "year", "durability"]
     while choice != "0":
         choice = terminal_view.get_choice(menus)
         if choice == "1":
-            inventory.get_available_items(inventory.get_file())
+            terminal_view.print_result(str(inventory.get_available_items(inventory.get_file())), "Availble items: ")
         elif choice == "2":
-            inventory.get_average_durability_by_manufacturers(inventory.get_file())
+            terminal_view.print_result(str(inventory.get_average_durability_by_manufacturers(inventory.get_file())), "Oldest persons: ")
         else:
             terminal_view.print_error_message("There is no such choice.")

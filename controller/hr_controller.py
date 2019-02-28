@@ -20,8 +20,8 @@ def run():
     while choice != "0":
         choice = terminal_view.get_choice(menus)
         if choice == "1":
-            terminal_view.print_table(hr.get_oldest_person(hr.get_file()), titles)
+            terminal_view.print_result(str(hr.get_oldest_person(hr.get_file())), "Oldest persons: ")
         elif choice == "2":
-            terminal_view.print_table(hr.get_persons_closest_to_average(hr.get_file()), titles)
+            terminal_view.print_result(str(hr.get_persons_closest_to_average(hr.get_file())), "Closest to average age: ")
         else:
             terminal_view.print_error_message("There is no such choice.")
