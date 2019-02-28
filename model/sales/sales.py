@@ -23,20 +23,6 @@ def get_data():
     return data_manager.get_table_from_file("model/sales/sales.csv")
 
 
-def get_user_input():
-    input_list = []
-    title_list = ["month_from: ", "day_from: ", "year_from: ", "month_to: ", "day_to: ", "year_to: "]
-    try:
-        for i in range(0, 6):
-            user_input = input(title_list[i])
-            val = int(user_input)
-            input_list.append(int(val))
-    except ValueError:
-        input_list.clear()
-        return get_user_input()
-    return input_list
-
-
 def get_lowest_price_item_id(table):
     """
     Question: What is the id of the item that was sold for the lowest price?

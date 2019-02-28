@@ -14,6 +14,19 @@ def run():
         None
     """
 
+    def get_user_inp():
+        inp_list = []
+        title_list = ["month_from: ", "day_from: ", "year_from: ", "month_to: ", "day_to: ", "year_to: "]
+        try:
+            user_inp = terminal_view.get_inputs(title_list, "")
+            val = user_inp
+            inp_list = list(map(int, val))
+        except ValueError:
+            inp_list.clear()
+            return get_user_inp()
+        return inp_list
+
+
     # your code
     menu_sale = ["Print sale list", "Add to sale list", "Remove form sale list", "Update record in sale list",
                  "Get ID lowest price item", "Get Item/s between date"]
@@ -38,7 +51,10 @@ def run():
             terminal_view.print_result(sales.get_lowest_price_item_id(sales.get_data()),
                                        'Id of the item sold the cheapest')
         if choice == "6":
-            user_input_list = sales.get_user_input()
+            user_input_list = get_user_inp()
+            print("DUPA")
+            print(user_input_list)
+            print("DUPA")
             print(user_input_list[0])
             terminal_view.print_table(
                 sales.get_items_sold_between(sales.get_data(), user_input_list[0], user_input_list[1],
