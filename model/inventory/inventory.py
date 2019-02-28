@@ -34,7 +34,6 @@ def get_available_items(table):
     """
 
     # your code
-    print(table)
 
 
 def get_average_durability_by_manufacturers(table):
@@ -49,4 +48,3 @@ def get_average_durability_by_manufacturers(table):
     """
 
     # your code
-    print(table)
