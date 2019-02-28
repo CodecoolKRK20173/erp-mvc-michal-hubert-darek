@@ -58,9 +58,10 @@ def remove(table, id_):
 
     if type(id_) != int: return
     if len(table) <= id_ or id_ < 0: return
-    
+
     output_table = table.copy()
     del output_table[id_]
+
 
     return output_table
 
@@ -98,7 +99,7 @@ def update(table, id_, record):
 
     if type(id_) != int: return table.copy()
     if len(table) <= id_ or id_ < 0: return table.copy()
-    
+
     output_table = table.copy()
     output_table[id_] = record
 
@@ -121,27 +122,27 @@ def generate_random(table):
     generated = ''
     lower_letter = lambda: chr(random.randint(ord('a'), ord('z')))
     upper_letter = lambda: chr(random.randint(ord('A'), ord('Z')))
-    number = lambda: random.randint(0,9)
-    
+    number = lambda: random.randint(0, 9)
+
     def special():
         exception = ("+", "-", "=", ";", ":", "'", '"', ",", ".") + tuple(map(str, range(0, 10)))
         generated_special_chr = chr(random.randint(ord('!'), ord('@')))
-        while(generated_special_chr in exception):
-            generated_special_chr = chr(random.randint(ord('!'), ord('@')))# witouth exception tuple characters
+        while (generated_special_chr in exception):
+            generated_special_chr = chr(random.randint(ord('!'), ord('@')))  # witouth exception tuple characters
         return generated_special_chr
 
     generated = f"{lower_letter()}{upper_letter()}{number()}{number()}{upper_letter()}{lower_letter()}{special()}{special()}"
 
-    if generated not in table: 
-        return generated# Example kH94Ju#&
-    else: 
+    if generated not in table:
+        return generated  # Example kH94Ju#&
+    else:
         try:
             generate_random(table)
         except RecursionError:
             raise RecursionError("Stack overflow error!")
 
 
-def quicksrt(table_to_srt, ascending_order = True):
+def quicksrt(table_to_srt, ascending_order=True):
     '''
     srt items with O(n*log(n)) computational complexity
 
@@ -161,7 +162,7 @@ def quicksrt(table_to_srt, ascending_order = True):
     lower_elements = [element for element in table_to_srt if element <= pivot_element]
     higher_elements = [element for element in table_to_srt if element > pivot_element]
 
-    if not ascending_order: 
+    if not ascending_order:
         lower_elements, higher_elements = higher_elements, lower_elements
 
     return quicksrt(lower_elements, ascending_order) + [pivot_element] + quicksrt(higher_elements, ascending_order)
@@ -189,6 +190,7 @@ def find_indx(list_of_elements, name_of_element):
     else:
         return None
 
+
 def count_elements(list_of_elements, name_of_element):
     '''
     Count elements equal name_of_element in list_of_elements
@@ -210,6 +212,7 @@ def count_elements(list_of_elements, name_of_element):
             counter += 1
     return counter
 
+
 def find_max(list_of_elements):
     '''
     Find max element in list_of_elements
@@ -224,3 +227,10 @@ def find_max(list_of_elements):
         if not max > element:
             max = element
     return max
+
+
+def make_record(data_table, inputs):
+    output_list = [generate_random(data_table)] + list(map(str, inputs))
+    return ";".join(output_list)
+
+    pass
