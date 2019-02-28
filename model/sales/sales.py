@@ -47,6 +47,11 @@ def get_lowest_price_item_id(table):
     return item_id
 
 
+def make_record(table, inputs):
+    output_list = [common.generate_random(table)] + list(map(str, inputs))
+    return ";".join(output_list)
+
+
 def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
     """
     Question: Which items are sold between two given dates? (from_date < sale_date < to_date)
@@ -68,8 +73,16 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
     start_date = (year_from * 365) + (month_from * 31) + day_from
     end_date = (year_to * 365) + (month_to * 31) + day_to
     filtered_table = []
+    final_filtered_table = []
     for item in table:
         date_inc = (int(item[5]) * 365) + (int(item[3]) * 31) + int(item[4])
-        if int(date_inc) >= start_date and int(date_inc) <= end_date:
+        if int(date_inc) > start_date and int(date_inc) < end_date:
             filtered_table.append(item)
-    return filtered_table
+
+    for item in filtered_table:
+        item[2] = int(item[2])
+        item[3] = int(item[3])
+        item[4] = int(item[4])
+        item[5] = int(item[5])
+        final_filtered_table.append(item)
+    return final_filtered_table

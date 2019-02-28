@@ -39,6 +39,7 @@ def run():
             terminal_view.print_table(sales.get_data(),title)
 
         if choice == "2":
+            print(sales.make_record(sales.get_data(), ["ELO", "MORDO", "DEADLINE", 2137]))
             pass
 
         if choice == "3":
@@ -56,6 +57,11 @@ def run():
             print(user_input_list)
             print("DUPA")
             print(user_input_list[0])
+            print(sales.get_items_sold_between(sales.get_data(), user_input_list[0], user_input_list[1],
+                                             user_input_list[2], user_input_list[3], user_input_list[4],
+                                             user_input_list[5]), title)
+
+
             terminal_view.print_table(
                 sales.get_items_sold_between(sales.get_data(), user_input_list[0], user_input_list[1],
                                              user_input_list[2], user_input_list[3], user_input_list[4],
