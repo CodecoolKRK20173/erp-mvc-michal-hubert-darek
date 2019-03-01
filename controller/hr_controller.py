@@ -15,13 +15,13 @@ def run():
     """
 
     # your code
-    menu_sale = ["Print sale list", "Add to sale list", "Remove form sale list", "Update record in sale list",
-                 "Oldest employe", "Average age"]
+    menu_hr = ["Print hr list", "Add to hr list", "Remove form hr list", "Update record in hr list",
+               "Oldest employe", "Average age"]
     title = ["Id", "Name", "Year"]
     title_del = ["Input ID: "]
     choice = None
     while choice != "0":
-        choice = terminal_view.get_choice(menu_sale)
+        choice = terminal_view.get_choice(menu_hr)
 
         if choice == "1":
             terminal_view.print_table(hr.get_data(), title)

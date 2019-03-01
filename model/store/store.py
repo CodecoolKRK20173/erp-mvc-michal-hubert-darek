@@ -100,7 +100,7 @@ def get_average_by_manufacturer(table, manufacturer):
             stock = stock + int(items[4])
             counter += 1
             isManufa = True
-        if isManufa:
-            return stock / counter
-        else:
-            return "Select manufacturer not exist "
+    if isManufa:
+        return stock / counter
+    else:
+        return "Select manufacturer not exist "

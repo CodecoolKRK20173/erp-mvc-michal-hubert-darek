@@ -13,13 +13,14 @@ def run():
     Returns:
         None
     """
-    menu_sale = ["Print store list", "Add to store list", "Remove form store list", "Update record in store list",
-                 "Show subscribers", "Show longest name ID"]
-    title = ["ID", "Name", "E-mail",  "Subscribed"]
+    menu_controller = ["Print controller list", "Add to controller list", "Remove form controller list",
+                       "Update record in controller list",
+                       "Show subscribers", "Show longest name ID"]
+    title = ["ID", "Name", "E-mail", "Subscribed"]
     title_del = ["Input ID: "]
     choice = None
     while choice != "0":
-        choice = terminal_view.get_choice(menu_sale)
+        choice = terminal_view.get_choice(menu_controller)
 
         if choice == "1":
             terminal_view.print_table(crm.get_data(), title)

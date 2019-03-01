@@ -16,13 +16,13 @@ def run():
 
     # your code
 
-    menu_sale = ["Print store list", "Add to store list", "Remove form store list", "Update record in store list",
-                 "Number of games in the manufacture", "Average amount of games in stock of a given manufacturer "]
+    menu_store = ["Print store list", "Add to store list", "Remove form store list", "Update record in store list",
+                  "Number of games in the manufacture", "Average amount of games in stock of a given manufacturer "]
     title = ["ID", "Title", "Manufacturer", "Price", "In_stock"]
     title_del = ["Input ID: "]
     choice = None
     while choice != "0":
-        choice = terminal_view.get_choice(menu_sale)
+        choice = terminal_view.get_choice(menu_store)
 
         if choice == "1":
             terminal_view.print_table(store.get_data(), title)

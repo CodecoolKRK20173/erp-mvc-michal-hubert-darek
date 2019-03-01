@@ -5,7 +5,7 @@ def length(album_list):
     for i in range(len(album_list[0])):
         size = 0
         for album in album_list:
-            if size < len(album[i]):
+            if size < len(str(album[i])):
                 size = len(album[i])
         lenght.append(size)
     return lenght
