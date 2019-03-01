@@ -1,0 +1,18 @@
+I. For all
+    1. Main menu
+    2. Common functions
+    3. Controllers
+    4. Bug fixes
+    5. Terminal view
+
+II. Darek's modules
+    1. Accounting
+    2. CRM
+
+III. Hubert's modules
+    1. HR
+    2. Inventory
+    
+IV. Michał's modules
+    1. Sales
+    2. Store

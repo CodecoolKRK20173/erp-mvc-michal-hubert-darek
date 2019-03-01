@@ -34,10 +34,10 @@ def delete_record(table, id, filename):
     counter = 0
     remove_id = None
     for item in table:
-        if str(item[0]) in str(id):
+        if str(item[0]) in str(s):
             remove_id = counter
+            new_list = common.remove(table, remove_id)
         counter += 1
-    new_list = common.remove(table, remove_id)
     data_manager.write_table_to_file(filename, new_list)
 
 
