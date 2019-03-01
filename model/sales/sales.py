@@ -47,8 +47,8 @@ def update_record(table, id, inputs, filename):
     for item in table:
         if str(item[0]) in str(id):
             update_id = counter
+            new_list = common.update(table, update_id, make_record(get_data(), inputs))
         counter += 1
-    new_list = common.update(table, update_id, make_record(get_data(), inputs))
     data_manager.write_table_to_file(filename, new_list)
 
 
